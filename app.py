@@ -24,3 +24,4 @@ def main():
 
 
 main()
+# streamlit run app.py
