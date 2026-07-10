@@ -19,4 +19,4 @@ def home_screen():
         if st.button('Student Portal'):
             st.session_state['login_type'] = 'student'
             st.rerun()
-
+ 
