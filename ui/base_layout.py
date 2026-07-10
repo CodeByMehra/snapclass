@@ -26,12 +26,23 @@ def style_base_layout():
     st.markdown("""
             <style>
                   /* Hide top bar of streeamlit */   
-                    #MainMenu,
-                    footer,
-                    header {
-                    display: none;
-                    }
-                    }   
+                    #MainMenu {
+            visibility: hidden;
+        }
+
+        footer {
+            visibility: hidden;
+        }
+
+        header {
+            visibility: hidden;
+        }
+        
+        .block-container{
+            padding-top:1.5rem !important;
+        }
+
+                      
             </style>
  
                 """,unsafe_allow_html=True)
