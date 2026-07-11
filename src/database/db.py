@@ -10,7 +10,7 @@ def hash_pass(pwd):
 
 # Function to check password in login process
 def check_pass(pwd, hashed):
-    return bcrypt.checkpw(pwd.encode(), hashed.code())
+    return bcrypt.checkpw(pwd.encode(), hashed.encode())
 
 # function to check if username already taken
 def check_teacher_exists(username):
@@ -31,7 +31,7 @@ def create_teacher(username, password, name):
 def teacher_login(username, password):
     response = supabase.table("teachers").select("*").eq("username", username).execute()
     if response.data:
-        teacher = response.data(0)
+        teacher = response.data[0]
         if check_pass(password, teacher["password"]):
             return teacher
     return None
