@@ -6,7 +6,7 @@ from src.ui.base_layout import (
     style_background_dashboard,
     style_base_layout,
 )
-
+from src.database.db import check_teacher_exists, create_teacher, teacher_login
 
 def teacher_screen():
     style_background_dashboard()
@@ -59,12 +59,19 @@ def teacher_screen_login():
     btnc1, btnc2 = st.columns(2)
 
     with btnc1:
-        st.button(
+        if st.button(
             "Login",
             icon=":material/passkey:",
             shortcut="control+Enter",
             width="stretch",
-        )
+        ):
+            if teacher_login(teacher_username, teacher_password):
+                st.toast("Welcome back!")
+                import time
+                time.sleep(1)
+                st.rerun()
+            else:
+                st.error("Invalid username or password")
     
     with btnc2:
         if st.button(
@@ -80,7 +87,20 @@ def teacher_screen_login():
     footer_dashboard()
         
     
-
+def register_teacher(teacher_username, teacher_name, teacher_password, teacher_password_confirm):
+    if not teacher_username or not teacher_name or not teacher_password:
+        return False, "All Fields Are Required!"
+    if check_teacher_exists(teacher_username):
+        return False, "Username Already Taken"
+    if teacher_password != teacher_password_confirm:
+        return False, "Password doesn't match"
+    
+    try:
+        create_teacher(teacher_username, teacher_password, teacher_name)
+        return True, "Successfullt Created! Login Now."
+    except Exception as e:
+        return False, "Unexpected Error!"
+    
 def teacher_screen_register():
     c1, c2 = st.columns(
         2,
@@ -132,12 +152,21 @@ def teacher_screen_register():
     btnc1, btnc2 = st.columns(2)
 
     with btnc1:
-        st.button(
+        if st.button(
             "Register now",
             icon=":material/passkey:",
             shortcut="control+Enter",
             width="stretch",
-        )
+        ):
+            success, message = register_teacher(teacher_username, teacher_name, teacher_password, teacher_password_confirm)
+            if success:
+                st.success(message)
+                import time
+                time.sleep(2)
+                st.session_state.teacher_login_type = "login"
+                st.rerun()
+            else:
+                st.error(message)
     
     with btnc2:
         if st.button(
