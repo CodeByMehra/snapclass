@@ -35,3 +35,8 @@ def teacher_login(username, password):
         if check_pass(password, teacher["password"]):
             return teacher
     return None
+
+#to get face data of all students:  (using in face pipeline)
+def get_all_students():
+    response = supabase.table("students").select("*").execute()
+    return response.data
