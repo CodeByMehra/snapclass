@@ -35,5 +35,5 @@ def student_screen():
     photo_source = st.camera_input("Position Your Face In Center")
     
     if photo_source:
-        np.array()
-    footer_dashboard(Image.open(photo_source))
+        np.array(Image.open(photo_source))
+    footer_dashboard()
