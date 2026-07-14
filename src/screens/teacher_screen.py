@@ -85,9 +85,6 @@ def teacher_tab_take_attendance():
     st.header("Take Attendence Section")
 
 def teacher_tab_manage_subjects():
-    st.header("Manage your Subjects")
-    
-def teacher_tab_attendance_records():
     teacher_id = st.session_state.teacher_data['teacher_id']
     col1, col2 = st.header(2)
     with col1:
@@ -95,6 +92,10 @@ def teacher_tab_attendance_records():
     
     with col2:
         st.button("Create New Subject", width="stretch")
+    st.header("Manage your Subjects")
+    
+def teacher_tab_attendance_records():
+    st.header('Attendence Records')
 
 def login_teacher(username, password):
     if not username or not password:
