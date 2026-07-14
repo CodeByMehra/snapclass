@@ -3,6 +3,7 @@ import streamlit as st
 from src.components.header import header_dashboard
 from src.components.footer import footer_dashboard
 from src.ui.base_layout import style_background_dashboard, style_base_layout
+from src.components.dialog_create_subject import create_subject_dialog
 
 from src.database.db import check_teacher_exists, create_teacher, teacher_login
 
@@ -91,7 +92,8 @@ def teacher_tab_manage_subjects():
         st.header('Manage Subjects')
     
     with col2:
-        st.button("Create New Subject", width="stretch")
+        if st.button("Create New Subject", width="stretch"):
+            create_subject_dialog(teacher_id)
     st.header("Manage your Subjects")
     
 def teacher_tab_attendance_records():
