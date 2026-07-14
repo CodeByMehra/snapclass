@@ -8,6 +8,7 @@ def create_subject_dialog(teacher_id):
     st.write("Enter the details of new subject")
     sub_id = st.text_input("Subject Code", placeholder="PC-CS-AIML-401A")
     sub_name = st.text_input("Subject Name", placeholder="Advance Computer Archictecture")
+    sub_section = st.text_input("Section", placeholder="A")
 
 
     if st.button("Create Subject Now", type='primary', width='stretch'):
