@@ -29,7 +29,7 @@ def student_dashboard():
             del st.session_state.student_data 
             st.rerun()
 
-
+ 
     st.space()
 
     c1, c2 =st.columns(2)
