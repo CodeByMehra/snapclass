@@ -137,7 +137,7 @@ def login_teacher(username, password):
         return True
     
     return False
- 
+
 def teacher_screen_login():
     c1, c2 = st.columns(
         2,
