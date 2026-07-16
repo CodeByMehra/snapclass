@@ -236,7 +236,7 @@ def teacher_tab_attendance_records():
 
     if not records:
         return
-    
+     
     data = []
 
     for r in records:
