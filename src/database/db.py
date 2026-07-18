@@ -91,5 +91,5 @@ def create_attendance(logs):
 
 def get_attendance_for_teacher(teacher_id):
                                                   #inner join to get teacher id
-    response = supabase.table("attendance_logs").select("*, subjects!inner(*)").eq("subject.teacher_id", teacher_id).execute()
+    response = supabase.table("attendance_logs").select("*, subjects!inner(*)").eq("subjects.teacher_id", teacher_id).execute()
     return response.data
