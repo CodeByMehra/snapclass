@@ -110,7 +110,7 @@ def teacher_tab_take_attendance():
     
     subject_options = {f"{s['name']} - {s['subject_code']}": s['subject_id'] for s in subjects}
     
-    col1, col2= st.column([3,1]) # ratio based 2 columns
+    col1, col2= st.columns([3,1]) # ratio based 2 columns
     
     with col1:
         selected_subject_label = st.selectbox('Select Subject', options=list(subject_options.keys()))
