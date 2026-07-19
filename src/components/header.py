@@ -19,5 +19,4 @@ def header_dashboard():
             <img src='{logo_url}' style='height:85px; border-radius:15px;' />
             <h2 style='text-align:left; color:#5865F2'>Attend<br/>Sense</h2>
         </div>   
-                
                 """, unsafe_allow_html=True)
